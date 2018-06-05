@@ -84,7 +84,7 @@ export default {
 
 <style>
 #progress-widget {
-  width: 25%;
+  width: 30%;
   background-color: white;
   border-radius: 5px;
   margin-bottom: 30px;

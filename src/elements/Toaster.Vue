@@ -31,10 +31,10 @@
 
     <div v-show="success" class="success-container">
       <i class="fa fa-check fa-3x" style="display: inline-block;" v-bind:class="{redText: red, greenText: green, yellowText: yellow}"></i>
-      <h2 v-show="checkMessage !== null" v-bind:class="{redText: red, blueText: green, yellowText: yellow}" style="display: inline-block;">{{successMessage}}</h2>
+      <h2 v-show="successMessage !== null" v-bind:class="{redText: red, blueText: green, yellowText: yellow}" style="display: inline-block;">{{successMessage}}</h2>
     </div>
 
-    <div v-show="xMark" class="x-container">
+    <div v-show="fail" class="x-container">
       <i class="fa fa-times fa-3x" style="display: inline-block;" v-bind:class="{redText: red, greenText: green, yellowText: yellow}"></i>
       <h2 v-show="failMessage !== null " v-bind:class="{redText: red, blueText: green, yellowText: yellow}" style="display: inline-block;">{{failMessage}}</h2>
     </div>
@@ -99,7 +99,10 @@ export default {
     },
     timer(newValue) {
       if (newValue !== this.timer) {
+        console.log("1");
         this.timer = newValue;
+        console.log("2");
+        this.setTimer(this.timer);
       }
     },
     bricks(newValue) {
@@ -118,13 +121,13 @@ export default {
       }
     },
     fail(newValue) {
-      if (newValue !== this.xMark) {
-        this.xMark = newValue;
+      if (newValue !== this.fail) {
+        this.fail = newValue;
       }
     },
     successMessage(newValue) {
-      if (newValue !== this.checkMessage) {
-        this.checkMessage = newValue;
+      if (newValue !== this.successMessage) {
+        this.successMessage = newValue;
       }
     },
     failMessage(newValue) {
@@ -142,47 +145,37 @@ export default {
         this.title = newValue;
       }
     },
-    timer() {
-      if (!isNaN(this.timer) && this.timer > 999) {
-        this.setTimer(this.timer);
-      }
-    },
+
     bricks() {
       if (this.bricks === true) {
-        this.xMark = false;
+        this.fail = false;
         this.success = false;
-
-        this.$emit("update:fail", false);
-        this.$emit("update:success", false);
       }
     },
     success() {
       if (this.success === true) {
-        this.xMark = false;
+        this.fail = false;
         this.bricks = false;
-
-        this.$emit("update:fail", false);
-        this.$emit("update:bricks", false);
       }
     },
-    xMark() {
-      if (this.xMark === true) {
+    fail() {
+      if (this.fail === true) {
         this.success = false;
         this.bricks = false;
-
-        this.$emit("update:success", false);
-        this.$emit("update:bricks", false);
       }
     }
   },
   methods: {
     setTimer(timer) {
+                  console.log("3")
       this.display = true;
 
       var self = this;
       setTimeout(function() {
         self.timer = null;
+        this.$store.dispatch("toggleToaster");
         self.display = false;
+        this.$store.dispatch("setTimer", { time: null });
       }, timer);
     }
   },
@@ -264,8 +257,8 @@ export default {
   transition: background-color 0.5s ease;
 }
 h4 {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 span {
   font-size: 15px !important;

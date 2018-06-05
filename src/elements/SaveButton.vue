@@ -23,7 +23,9 @@ export default {
 
   methods: {
     tryBeginSave() {
-      this.$store.dispatch("toggleToaster");
+      this.$store.dispatch("toggleToaster");      
+      this.$store.dispatch("setToasterMessage", {message: "Saving"});
+
       setTimeout(() => {
         this.$store.dispatch("toggleToaster");
         this.$store.dispatch("progressWidget/closeGlossary");
@@ -36,5 +38,4 @@ export default {
 };
 </script>
 <style>
-
 </style>

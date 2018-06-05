@@ -43,6 +43,10 @@ export const store = new Vuex.Store({
       state.bricks = !state.bricks;
     },
 
+    setToasterTitle(state, payload) {
+      state.title = payload.title;
+    },
+
     setToasterColor(state, payload) {
       state.color = payload.color;
     },
@@ -64,7 +68,7 @@ export const store = new Vuex.Store({
     },
 
     setToasterFailMessage(state, payload) {
-      state.failMessage = payload.failMessage;
+      state.failMessage = payload.failMessage;S
     },
   },
 
