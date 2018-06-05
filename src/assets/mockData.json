@@ -1,0 +1,46 @@
+{
+  "Items": [
+      {
+      "Name": "Personal Information",
+      "Url": "/employee/benefits/Enrollment/PersonalInformation/NewHire",
+      "IsComplete": false,
+      "Index": 0
+    },
+    {
+      "Name": "Dependent Information",
+      "Url": "/employee/benefits/Enrollment/DependentInformation/NewHire",
+      "IsComplete": false,
+      "Index": 1
+    },
+    {
+      "Name": "Medical",
+      "Url": "/employee/benefits/Enrollment/Medical/NewHire",
+      "IsComplete": false,
+      "Index": 2
+    },
+    {
+      "Name": "HSA",
+      "Url": "/employee/benefits/Enrollment/HSA/NewHire",
+      "IsComplete": false,
+      "Index": 3
+    },
+    {
+      "Name": "Dental",
+      "Url": "/employee/benefits/Enrollment/Dental/NewHire",
+      "IsComplete": false,
+      "Index": 4
+    },
+    {
+      "Name": "Primary Care Physician",
+      "Url": "/employee/benefits/Enrollment/PCP/NewHire",
+      "IsComplete": false,
+      "Index": 5
+    },
+    {
+      "Name": "Enrollment Summary",
+      "Url": "/employee/benefits/Enrollment/Summary/NewHire",
+      "IsComplete": false,
+      "Index": 6
+    }
+  ]
+}
