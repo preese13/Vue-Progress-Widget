@@ -23,11 +23,32 @@ export default {
 
   methods: {
     tryBeginSave() {
-      this.$store.dispatch("toggleToaster");      
-      this.$store.dispatch("setToasterMessage", {message: "Saving"});
+      this.$store.dispatch("toggleToaster");
+      this.$store.dispatch("setToasterColor", { color: "yellow" });
+      this.$store.dispatch("toggleBricks", { bricks: true });
+      this.$store.dispatch("setToasterTitle", { title: "Saving" });
+
+    /*  setTimeout(() => {
+        this.$store.dispatch("toggleBricks", { bricks: false });
+        this.$store.dispatch("setToasterColor", { color: "red" });
+        this.$store.dispatch("setToasterFailMessage", {
+          failMessage: "Uhhhhhhh!"
+        });
+        this.$store.dispatch("toggleToasterFail", { fail: true });
+      }, 2000);*/
 
       setTimeout(() => {
-        this.$store.dispatch("toggleToaster");
+        this.$store.dispatch("toggleBricks", { bricks: false });
+        this.$store.dispatch("setToasterColor", { color: "green" });
+        this.$store.dispatch("setToasterSuccessMessage", {
+          successMessage: "Saved!"
+        });
+        this.$store.dispatch("toggleToasterSuccess", { success: true });
+      }, 2000);
+
+      setTimeout(() => {
+        this.$store.dispatch("resetToaster");
+
         this.$store.dispatch("progressWidget/closeGlossary");
         this.$store.dispatch("save", {
           itemIndex: this.$store.state.progressWidget.currentItemIndex

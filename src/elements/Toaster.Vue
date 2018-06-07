@@ -31,12 +31,12 @@
 
     <div v-show="success" class="success-container">
       <i class="fa fa-check fa-3x" style="display: inline-block;" v-bind:class="{redText: red, greenText: green, yellowText: yellow}"></i>
-      <h2 v-show="successMessage !== null" v-bind:class="{redText: red, blueText: green, yellowText: yellow}" style="display: inline-block;">{{successMessage}}</h2>
+      <h2 v-show="successMessage !== null" v-bind:class="{redText: red, blueText: green, yellowText: yellow}" style="display: inline-block; margin-left: 10px;">{{successMessage}}</h2>
     </div>
 
-    <div v-show="fail" class="x-container">
+    <div v-show="fail" class="fail-container">
       <i class="fa fa-times fa-3x" style="display: inline-block;" v-bind:class="{redText: red, greenText: green, yellowText: yellow}"></i>
-      <h2 v-show="failMessage !== null " v-bind:class="{redText: red, blueText: green, yellowText: yellow}" style="display: inline-block;">{{failMessage}}</h2>
+      <h2 v-show="failMessage !== null " v-bind:class="{redText: red, blueText: green, yellowText: yellow}" style="display: inline-block; margin-left: 10px;">{{failMessage}}</h2>
     </div>
   </div>
    </transition>
@@ -99,9 +99,7 @@ export default {
     },
     timer(newValue) {
       if (newValue !== this.timer) {
-        console.log("1");
         this.timer = newValue;
-        console.log("2");
         this.setTimer(this.timer);
       }
     },
@@ -167,7 +165,6 @@ export default {
   },
   methods: {
     setTimer(timer) {
-                  console.log("3")
       this.display = true;
 
       var self = this;
@@ -324,6 +321,15 @@ span {
   margin: 0px;
 }
 
+.success-container {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.fail-container {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
 .rect {
   color: white;
   text-align: center;
