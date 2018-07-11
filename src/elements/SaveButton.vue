@@ -28,15 +28,6 @@ export default {
       this.$store.dispatch("toggleBricks", { bricks: true });
       this.$store.dispatch("setToasterTitle", { title: "Saving" });
 
-    /*  setTimeout(() => {
-        this.$store.dispatch("toggleBricks", { bricks: false });
-        this.$store.dispatch("setToasterColor", { color: "red" });
-        this.$store.dispatch("setToasterFailMessage", {
-          failMessage: "Uhhhhhhh!"
-        });
-        this.$store.dispatch("toggleToasterFail", { fail: true });
-      }, 2000);*/
-
       setTimeout(() => {
         this.$store.dispatch("toggleBricks", { bricks: false });
         this.$store.dispatch("setToasterColor", { color: "green" });
@@ -45,6 +36,15 @@ export default {
         });
         this.$store.dispatch("toggleToasterSuccess", { success: true });
       }, 2000);
+
+      /*setTimeout(() => {
+        this.$store.dispatch("toggleBricks", { bricks: false });
+        this.$store.dispatch("setToasterColor", { color: "green" });
+        this.$store.dispatch("setToasterSuccessMessage", {
+          successMessage: "Saved!"
+        });
+        this.$store.dispatch("toggleToasterSuccess", { success: true });
+      }, 2000);*/
 
       setTimeout(() => {
         this.$store.dispatch("resetToaster");

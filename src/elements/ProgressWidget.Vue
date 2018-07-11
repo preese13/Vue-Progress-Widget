@@ -1,5 +1,6 @@
 <template>
-  <div id="progress-widget">
+  <div id="progress-widget" 
+  v-bind:class="{'open': openGlossary}">
     <div class="progress-section-top">
       <div class="progress-title-conatiner">
         Progress: {{completedItems}} of {{totalItemCount}}
@@ -18,6 +19,7 @@
         <img v-bind:class="{'icon-flipped': openGlossary}" src="../assets/carrot.png">
       </div>
     </div>
+    <transition name="slide-fade">
     <div class="progress-glossary-container"
     v-show="openGlossary">
       <ol style="padding-left:10px">
@@ -33,6 +35,7 @@
        </li>
       </ol>
     </div>
+    </transition>
   </div>
 </template>
      
@@ -41,7 +44,6 @@ export default {
   data() {
     return {};
   },
-
   methods: {
     routeClicked(data) {
       this.$store.dispatch("progressWidget/advance", data.Index);
@@ -51,7 +53,6 @@ export default {
       this.isOpen = !this.isOpen;
     }
   },
-
   computed: {
     openGlossary() {
       return this.$store.state.progressWidget.openGlossary;
@@ -89,8 +90,29 @@ export default {
   border-radius: 5px;
   margin-bottom: 30px;
   border: 1px solid lightgray;
-  height: fit-content;
+  transition:max-height 0.3s ease-out; 
+  height:auto;
+  max-height:135px; 
+
 }
+
+.open {
+  max-height: 365px !important;
+}
+
+.slide-fade-enter-active {
+  transition: all .4s ease;
+}
+.slide-fade-leave-active {
+  transition: all .1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-100px);
+  opacity: 0;
+}
+
+
 .progress-section-top {
   height: 40px;
   font-size: 22px;
@@ -162,7 +184,6 @@ export default {
 #glossary-button-container {
   cursor: pointer;
 }
-
 @media screen and (max-width: 1300px) {
   #progress-title {
     font-size: 20px;
@@ -188,7 +209,6 @@ export default {
     margin-bottom: 0px;
     border-bottom: none;
   }
-
   .progress-section-middle {
     width: 90%;
     margin-left: auto;
@@ -196,4 +216,3 @@ export default {
   }
 }
 </style>
-
