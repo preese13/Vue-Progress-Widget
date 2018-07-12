@@ -187,4 +187,11 @@ h4{
   height: 15px;
   width: 30px;;
 }
+
+@media screen and (max-width: 800px) {
+  ul {
+    padding-left: 0px;
+
+  }
+}
 </style>

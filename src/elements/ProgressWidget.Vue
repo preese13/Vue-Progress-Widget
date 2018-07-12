@@ -45,9 +45,11 @@ export default {
     return {};
   },
   methods: {
+    //triggers the method needed when someone navigates to another form without completing
     routeClicked(data) {
       this.$store.dispatch("progressWidget/advance", data.Index);
     },
+    //the store & the widget need to know when the glossary is open
     toggleGlossary() {
       this.$store.dispatch("progressWidget/toggleGlossary");
       this.isOpen = !this.isOpen;

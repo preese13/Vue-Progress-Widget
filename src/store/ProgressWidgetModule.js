@@ -1,4 +1,4 @@
-import _ from 'underscore';
+
 
 export const ProgressWidgetModule = {
   namespaced: true,
@@ -12,7 +12,7 @@ export const ProgressWidgetModule = {
   },
 
   getters: {
-    currentItem(state, getters) {
+    currentItem(state) {
       return state.items[state.currentItemIndex];
     },
     currentItemIsLast(state) {

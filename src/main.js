@@ -22,7 +22,7 @@ Vue.use(VueNotifications);
 
 const router = new VueRouter({
   routes: Routes,
-  mode: 'history', //removes the '#' from the path: https://router.vuejs.org/en/essentials/history-mode.html
+  mode: 'history',
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 }
   }

@@ -5,25 +5,25 @@
 
   <div v-show="showToaster" v-bind:class="{ toastergreen: green, toasterred: red, toasteryellow: yellow, toaster: true }">
 
-    <img src="../assets/EmployeeNavigator.png" style="width: 250px">
+    <img id="logo" src="../assets/EmployeeNavigator.png" style="width: 250px">
 
     <h2 v-show="title !== null && fail === false && success === false" class="blueText">{{title}}</h2>
 
     <!--Animation-->
-    <div v-show="bricks" style="height: 80px;" class="spinner spinner--stretch">
-      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect rect-1">
+    <div id="animation-station" v-show="bricks" style="height: 80px;" class="spinner spinner--stretch">
+      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect-1">
       </div>
-      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect rect-2">
+      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect-2">
       </div>
-      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect rect-3">
+      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect-3">
       </div>
-      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect rect-4">
+      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect-4">
       </div>
-      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect rect-5">
+      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect-5">
       </div>
-      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect rect-6">
+      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect-6">
       </div>
-      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect rect-7">
+      <div v-bind:class="{ greenbricks: green, redbricks: red, yellowbricks: yellow, rect: true}" class="rect-7">
       </div>
     </div>
 
@@ -163,6 +163,7 @@ export default {
       }
     }
   },
+
   methods: {
     setTimer(timer) {
       this.display = true;
@@ -170,51 +171,52 @@ export default {
       var self = this;
       setTimeout(function() {
         self.timer = null;
-        this.$store.dispatch("toggleToaster");
+        this.$store.dispatch("toaster/toggleToaster");
         self.display = false;
-        this.$store.dispatch("setTimer", { time: null });
+        this.$store.dispatch("toaster/setTimer", { time: null });
       }, timer);
     }
   },
+
   computed: {
     showToaster() {
-      return this.$store.state.showToaster;
+      return this.$store.state.toaster.showToaster;
     },
 
     timer() {
-      return this.$store.state.timer;
+      return this.$store.state.toaster.timer;
     },
 
     bricks() {
-      return this.$store.state.bricks;
+      return this.$store.state.toaster.bricks;
     },
 
     color() {
-      return this.$store.state.color;
+      return this.$store.state.toaster.color;
     },
 
     success() {
-      return this.$store.state.success;
+      return this.$store.state.toaster.success;
     },
 
     fail() {
-      return this.$store.state.fail;
+      return this.$store.state.toaster.fail;
     },
 
     title() {
-      return this.$store.state.title;
+      return this.$store.state.toaster.title;
     },
 
     message() {
-      return this.$store.state.message;
+      return this.$store.state.toaster.message;
     },
 
     successMessage() {
-      return this.$store.state.successMessage;
+      return this.$store.state.toaster.successMessage;
     },
 
     failMessage() {
-      return this.$store.state.failMessage;
+      return this.$store.state.toaster.failMessage;
     },
     green() {
       if (this.color === "green") {
@@ -339,7 +341,6 @@ span {
 .spinner {
   display: inline-block;
   text-align: center;
-  font-size: 10px;
   width: 250px;
   * {
     line-height: 0;
@@ -426,6 +427,17 @@ button {
 
 input {
   margin: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  #logo {
+    width: 150px !important;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
 }
 
 @media screen and (max-width: 350px) {

@@ -9,12 +9,14 @@
 </template>
 
 <script>
+//Forms are imported, as opposed to being kept in the store, because the actual app gets them in a similar format from the business logic layer
 const mockData = require("./assets/mockData.json");
 
 export default {
   name: "app",
   data() {
     return {
+      //allows me to insert the mockData into vue
       progressState: {
         items: mockData.Items
       }
@@ -22,6 +24,7 @@ export default {
   },
 
   mounted() {
+    //method runs when dom is updated... follow the app in ./store/progresswidget or ./store.js
     this.$nextTick(() => {
       this.$store.dispatch("progressWidget/init", this.progressState);
       this.$store.dispatch("init", { router: this.$router });

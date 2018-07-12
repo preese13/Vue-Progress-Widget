@@ -203,4 +203,10 @@ input {
 option {
   width: 100%;
 }
+@media screen and (max-width: 800px) {
+  ul {
+    padding-left: 0px;
+
+  }
+}
 </style>
