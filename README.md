@@ -1,6 +1,10 @@
-# progress-wiget
+## Startup
 
-> A Vue.js project
+Clone repository
+
+Run: $npm install
+
+Run: $npm run dev
 
 ## Intro
 Welcome! to the EN progress widget demo, a sandbox where we've ironed out the issues in the enrollment process for the EN employee app.  Our goal, to get users to finish their damn forms so their HR representatives don't have to bother them for months.  Our solution:  a 'progress widget' that will control the user's navigation while in the enrollment flow, while also clueing them in to how many more forms need to be filled out.
